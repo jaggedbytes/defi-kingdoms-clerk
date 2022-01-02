@@ -9,6 +9,7 @@ import styles from './form.module.css'
 
 function Form() {
   const [transactionData, setTransactionData] = useState([])
+  const setNetworkValue = useState("")
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
 
@@ -24,6 +25,7 @@ function Form() {
       event.preventDefault()
 
       const formData = {
+          network: event.target.network.value,
           address: event.target.address.value,
           startDate: startDate,
           endDate: endDate
@@ -45,6 +47,16 @@ function Form() {
   return(
     <section>
       <form id="transactionQuery" onSubmit={fetchTransactionData}>
+        <label htmlFor="network">Network</label>
+        <select
+          id="network"
+          name="network"
+          onChange={(e) => setNetworkValue(e.target.value)}
+        >
+          <option value="harmony">Serendale on Harmony</option>
+          <option value="avalanche" disabled>Crystalvale on Avalanche</option>
+        </select>
+
         <label htmlFor="address">Address</label>
         <input id="address" type="text" placeholder="0x0000000000000000000000000000000000000000" required />
 
