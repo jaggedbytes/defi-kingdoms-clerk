@@ -4,8 +4,8 @@ import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
-const name = 'Bean Jackson'
-export const siteTitle = 'DFK Clerk'
+const name = 'Clerk Bean Jackson'
+export const siteTitle = 'DeFi Kingdoms Clerk'
 
 export default function Layout({ children, home }) {
   return (
@@ -30,7 +30,7 @@ export default function Layout({ children, home }) {
           <>
             <Image
               priority
-              src="/images/profile.jpg"
+              src="/images/Clerk of Serendale.png"
               className={utilStyles.borderCircle}
               height={144}
               width={144}
