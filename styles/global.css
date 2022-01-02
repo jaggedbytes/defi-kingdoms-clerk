@@ -39,6 +39,10 @@
   color: white !important;
 }
 
+.react-datepicker__day:hover {
+  background-color: #14c25a !important;
+}
+
 .react-datepicker__navigation:hover *::before {
   border-color: white !important;
 }
