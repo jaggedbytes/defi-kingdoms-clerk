@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker'
 import { addDays } from "date-fns"
 import 'react-datepicker/dist/react-datepicker.css'
 import moment from 'moment'
-import { getTransactionReceipt } from '../lib/posts'
+import { getTransactionReceipt } from '../lib/requests'
 import Image from 'next/image'
 
 function Form() {
@@ -18,6 +18,16 @@ function Form() {
 
   function hideLoader() {
     document.getElementById('loader').style.display = 'none'
+  }
+
+  function formatQuantity(item, quantity) {
+    switch(item) {
+      case 'Jewel Bag':
+        return `${quantity * Math.pow(10, -18)} JEWEL`
+
+      case 'Gold Bag':
+        return `${quantity * Math.pow(10, -3)} DFKGOLD`
+    }
   }
 
   const fetchTransactionData = async event => {
@@ -195,9 +205,9 @@ function Form() {
         <table className="min-w-full">
           <thead className="border-b">
             <tr>
-              {/* <th>ID</th>
-              <th>Start Time</th>
-              <th>Start Block</th> */}
+              {/* <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">ID</th>
+              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Start Time</th>
+              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Start Block</th> */}
               <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Timestamp</th>
               <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Quest</th>
               <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">ID</th>
@@ -210,9 +220,9 @@ function Form() {
           <tbody>
             { transactionData.map(({ id, questContract, questId, player, heroId, startTime, startBlock, completeAtTime, rewardItem, itemQuantity }) => (
               <tr>
-                {/* <td>{ id }</td>
-                <td>{ startTime }</td>
-                <td>{ startBlock }</td> */}
+                {/* <td className="border px-8 py-4 text-sm">{ id }</td>
+                <td className="border px-8 py-4 text-sm">{ startTime }</td>
+                <td className="border px-8 py-4 text-sm">{ startBlock }</td> */}
                 <td className="border px-8 py-4 text-sm">{ completeAtTime ? moment.unix(completeAtTime).format("L @ LT") : '' }</td>
                 <td className="border px-8 py-4 text-sm">{ questContract }</td>
                 <td className="border px-8 py-4 text-sm">{ questId }</td>
@@ -226,7 +236,7 @@ function Form() {
                   /> <br />
                   { rewardItem }
                 </td>
-                <td className="border px-8 py-4 text-sm">{ itemQuantity }</td>
+                <td className="border px-8 py-4 text-sm">{ formatQuantity(rewardItem, itemQuantity) }</td>
               </tr>
             )) }
           </tbody>
