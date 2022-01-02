@@ -5,7 +5,6 @@ import "react-datepicker/dist/react-datepicker.css"
 import moment from 'moment'
 import { getTransactionReceipt } from '../lib/posts'
 import Image from 'next/image'
-import styles from './form.module.css'
 
 function Form() {
   const [transactionData, setTransactionData] = useState([])
@@ -83,52 +82,51 @@ function Form() {
 
         <button type="submit">Submit</button>
       </form>
-      <div id="loader" style={{ display: "none" }} className={styles.container}>
+      <div id="loader" style={{ display: "none" }}>
         <Image
           priority
           src="/images/loader.png"
           height={144}
           width={144}
-          className={styles.loader}
+          className="animate-spin"
         />
       </div>
-      <div>
-        <table>
-          <thead>
+      <div className="flex flex-col">
+        <table className="min-w-full">
+          <thead className="border-b">
             <tr>
-              <th>ID</th>
+              {/* <th>ID</th>
               <th>Start Time</th>
-              <th>Start Block</th>
-              <th>Complete At Time</th>
-              <th>Quest Contract</th>
-              <th>Quest ID</th>
-              <th>Player</th>
-              <th>Hero</th>
-              <th>Reward</th>
-              <th>Reward Photo</th>
-              <th>Item Quantity</th>
-          </tr>
+              <th>Start Block</th> */}
+              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Timestamp</th>
+              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Quest</th>
+              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">ID</th>
+              {/* <th>Player</th> */}
+              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Hero</th>
+              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Reward</th>
+              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Qty</th>
+            </tr>
           </thead>
           <tbody>
             { transactionData.map(({ id, questContract, questId, player, heroId, startTime, startBlock, completeAtTime, rewardItem, itemQuantity }) => (
               <tr>
-                <td>{ id }</td>
+                {/* <td>{ id }</td>
                 <td>{ startTime }</td>
-                <td>{ startBlock }</td>
-                <td>{ completeAtTime ? moment.unix(completeAtTime).toString() : '' }</td>
-                <td>{ questContract }</td>
-                <td>{ questId }</td>
-                <td>{ player }</td>
-                <td>{ heroId }</td>
-                <td>{ rewardItem }</td>
-                <td>
+                <td>{ startBlock }</td> */}
+                <td className="border px-8 py-4 text-sm">{ completeAtTime ? moment.unix(completeAtTime).format("L @ LT") : '' }</td>
+                <td className="border px-8 py-4 text-sm">{ questContract }</td>
+                <td className="border px-8 py-4 text-sm">{ questId }</td>
+                {/* <td>{ player }</td> */}
+                <td className="border px-8 py-4 text-sm">{ heroId }</td>
+                <td className="border px-8 py-4 text-sm text-center">
                   <Image
                     src={ "/images/items/" + rewardItem + ".png" }
                     height={40}
                     width={40}
-                  />
+                  /> <br />
+                  { rewardItem }
                 </td>
-                <td>{ itemQuantity }</td>
+                <td className="border px-8 py-4 text-sm">{ itemQuantity }</td>
               </tr>
             )) }
           </tbody>

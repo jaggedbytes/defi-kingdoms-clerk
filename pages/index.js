@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
 import TransactionForm from '../components/form'
 
 export default function Home() {
@@ -21,8 +20,8 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <section className={utilStyles.headingMd}>
-        <h1>... of Serendale</h1>
+      <section>
+        <h1 className="font-header text-lg underline">... of Serendale</h1>
         <p>
           What has been written is history.
         </p>
