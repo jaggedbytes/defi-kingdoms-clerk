@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker'
 import { addDays } from "date-fns"
-import "react-datepicker/dist/react-datepicker.css"
+import 'react-datepicker/dist/react-datepicker.css'
 import moment from 'moment'
 import { getTransactionReceipt } from '../lib/posts'
 import Image from 'next/image'
@@ -45,43 +45,143 @@ function Form() {
 
   return(
     <section>
-      <form id="transactionQuery" onSubmit={fetchTransactionData}>
-        <label htmlFor="network">Network</label>
-        <select
-          id="network"
-          name="network"
-          onChange={(e) => setNetworkValue(e.target.value)}
-        >
-          <option value="harmony">Serendale on Harmony</option>
-          <option value="avalanche" disabled>Crystalvale on Avalanche</option>
-        </select>
+      <div>
+        <form id="transactionQuery" className="bg-obsidian p-5 m-5" onSubmit={fetchTransactionData}>
+          <div className="flex flex-row mb-5">
+            <div className="basis-1/4 mr-2">
+              <label htmlFor="network" className="inline-block mb-2 font-header text-lg text-white">World</label>
+              <select
+                id="network"
+                name="network"
+                onChange={(e) => setNetworkValue(e.target.value)}
+                className="
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  text-white
+                  bg-obsidian
+                  border-2 border-solid border-white
+                  hover:border-ivy
+                  active:border-ivy
+                  transition
+                  duration-300
+                  ease-in-out
+                  m-0
+                  focus:bg-obsidian focus:border-ivy focus:outline-none 
+                "
+              >
+                <option value="harmony">Serendale</option>
+                <option value="avalanche" disabled>Crystalvale</option>
+              </select>
+            </div>
+            <div className="basis-3/4 ml-2">
+              <label htmlFor="address" className="inline-block mb-2 font-header text-lg text-white">Address</label>
+              <input 
+                className="
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  text-white
+                  bg-obsidian
+                  border-2 border-solid border-white
+                  hover:border-ivy
+                  transition
+                  duration-300
+                  ease-in-out
+                  m-0
+                  focus:bg-obsidian focus:border-ivy focus:outline-none 
+                  active:bg-obsidian
+                "
+                id="address" type="text" placeholder="0x0000000000000000000000000000000000000000" required
+              />
+            </div>
+          </div>
 
-        <label htmlFor="address">Address</label>
-        <input id="address" type="text" placeholder="0x0000000000000000000000000000000000000000" required />
+          <div className="flex flex-row mb-5">
+            <div className="basis-1/2 mr-2">
+              <label htmlFor="startDate" className="inline-block mb-2 font-header text-lg text-white">Start Date</label>
+              <DatePicker
+                id="startDate"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                selectsStart
+                startDate={startDate.setHours(0,0,0,0)}
+                maxDate={addDays(new Date(), 1)}
+                className="
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  text-white
+                  bg-obsidian
+                  border-2 border-solid border-white
+                  hover:border-ivy
+                  transition
+                  duration-300
+                  ease-in-out
+                  m-0
+                  focus:bg-obsidian focus:border-ivy focus:outline-none 
+                  active:bg-obsidian 
+                "
+              />
+            </div>
+            <div className="basis-1/2 ml-2">
+              <label htmlFor="endDate" className="inline-block mb-2 font-header text-lg text-white">End Date</label>
+              <DatePicker
+                id="endDate"
+                selected={endDate.setHours(0,0,0,0)}
+                onChange={(date) => setEndDate(date)}
+                selectsEnd
+                endDate={endDate}
+                minDate={startDate}
+                maxDate={addDays(new Date(), 1)}
+                className="
+                  w-full
+                  px-3
+                  py-1.5
+                  text-base
+                  text-white
+                  bg-obsidian
+                  border-2 border-solid border-white
+                  hover:border-ivy
+                  transition
+                  duration-300
+                  ease-in-out
+                  m-0
+                  focus:bg-obsidian focus:border-ivy focus:outline-none 
+                  active:bg-obsidian 
+                "
+              />
+            </div>
+          </div>
 
-        <label htmlFor="startDate">Start Date</label>
-        <DatePicker
-          id="startDate"
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          selectsStart
-          startDate={startDate.setHours(0,0,0,0)}
-          maxDate={addDays(new Date(), 1)}
-        />
-
-        <label htmlFor="endDate">End Date</label>
-        <DatePicker
-          id="endDate"
-          selected={endDate.setHours(0,0,0,0)}
-          onChange={(date) => setEndDate(date)}
-          selectsEnd
-          endDate={endDate}
-          minDate={startDate}
-          maxDate={addDays(new Date(), 1)}
-        />
-
-        <button type="submit">Submit</button>
-      </form>
+          <div className="flex flex-row mb-5">
+            <button
+              className="
+                px-10
+                py-1.5
+                bg-obsidian
+                text-honey                
+                text-xs
+                uppercase
+                tracking-widest
+                rounded-lg
+                border-honey
+                border-2
+                hover:-translate-y-0.5
+                hover:text-obsidian
+                hover:bg-daffodil
+                active:bg-daffodil
+                transition
+                duration-300
+                ease-in-out
+              "
+              type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
       <div id="loader" style={{ display: "none" }}>
         <Image
           priority

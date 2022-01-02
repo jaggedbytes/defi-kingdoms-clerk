@@ -8,7 +8,14 @@ module.exports = {
       'header': ['Lora', 'serif'],
       'sans': ['Poppins', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      colors: {
+        'obsidian': '#100f21',
+        'daffodil': '#fbeb74',
+        'honey': '#fac05d',
+        'ivy': '#14c25a',
+      }
+    },
   },
   plugins: [],
 }
