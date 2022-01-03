@@ -27,6 +27,9 @@ function Form() {
 
       case 'Gold Bag':
         return `${quantity * Math.pow(10, -3)} DFKGOLD`
+
+      default:
+        return quantity
     }
   }
 
@@ -218,8 +221,8 @@ function Form() {
             </tr>
           </thead>
           <tbody>
-            { transactionData.map(({ id, questContract, questId, player, heroId, startTime, startBlock, completeAtTime, rewardItem, itemQuantity }) => (
-              <tr>
+            { transactionData.map(({ key, id, questContract, questId, player, heroId, startTime, startBlock, completeAtTime, rewardItem, itemQuantity }) => (
+              <tr key={ key }>
                 {/* <td className="border px-8 py-4 text-sm">{ id }</td>
                 <td className="border px-8 py-4 text-sm">{ startTime }</td>
                 <td className="border px-8 py-4 text-sm">{ startBlock }</td> */}
