@@ -59,8 +59,8 @@ function Form() {
   return(
     <section>
       <div>
-        <form id="transactionQuery" className="bg-obsidian p-5 m-5" onSubmit={fetchTransactionData}>
-          <div className="flex flex-row mb-5">
+        <form id="transactionQuery" className="p-5 m-5" onSubmit={fetchTransactionData}>
+          <div className="flex flex-row mb-5 max-w-[835px]">
             <div className="basis-1/4 mr-2">
               <label htmlFor="network" className="inline-block mb-2 font-header text-lg text-white">World</label>
               <select
@@ -112,7 +112,7 @@ function Form() {
             </div>
           </div>
 
-          <div className="flex flex-row mb-5">
+          <div className="flex flex-row mb-5 max-w-[835px]">
             <div className="basis-1/2 mr-2">
               <label htmlFor="startDate" className="inline-block mb-2 font-header text-lg text-white">Start Date</label>
               <DatePicker
@@ -195,43 +195,47 @@ function Form() {
           </div>
         </form>
       </div>
-      <div id="loader" style={{ display: "none" }}>
-        <Image
-          priority
-          src="/images/loader.png"
-          height={144}
-          width={144}
-          className="animate-spin"
-        />
+
+      <div className="relative grid w-full">
+        <div id="loader" style={{ display: "none" }} className="absolute justify-self-center">
+          <Image
+            priority
+            src="/images/loader.png"
+            height={144}
+            width={144}
+            className="animate-spin-slow"
+          />
+        </div>
       </div>
-      <div className="flex flex-col">
+     
+      <div className="w-full">
         <table className="min-w-full">
-          <thead className="border-b">
+          <thead className="border-b border-hazelnut">
             <tr>
-              {/* <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">ID</th>
-              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Start Time</th>
-              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Start Block</th> */}
-              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Timestamp</th>
-              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Quest</th>
-              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">ID</th>
-              {/* <th>Player</th> */}
-              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Hero</th>
-              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Reward</th>
-              <th scope="col" className="border font-header text-left px-8 py-4 text-left align-top">Qty</th>
+              {/* <th scope="col" className="border border-hazelnut font-header text-white text-left px-8 py-4 text-left align-top">ID</th>
+              <th scope="col" className="border border-hazelnut font-header text-white text-left px-8 py-4 text-left align-top">Start Time</th>
+              <th scope="col" className="border border-hazelnut font-header text-white text-left px-8 py-4 text-left align-top">Start Block</th> */}
+              <th scope="col" className="border border-hazelnut font-header text-white text-left px-8 py-4 text-left align-top">Timestamp</th>
+              <th scope="col" className="border border-hazelnut font-header text-white text-left px-8 py-4 text-left align-top">Quest</th>
+              {/* <th scope="col" className="border border-hazelnut font-header text-white text-left px-8 py-4 text-left align-top">ID</th>
+              <th>Player</th> */}
+              <th scope="col" className="border border-hazelnut font-header text-white text-left px-8 py-4 text-left align-top">Hero</th>
+              <th scope="col" className="border border-hazelnut font-header text-white text-left px-8 py-4 text-left align-top">Reward</th>
+              <th scope="col" className="border border-hazelnut font-header text-white text-left px-8 py-4 text-left align-top">Qty</th>
             </tr>
           </thead>
           <tbody>
             { transactionData.map(({ key, id, questContract, questId, player, heroId, startTime, startBlock, completeAtTime, rewardItem, itemQuantity }) => (
               <tr key={ key }>
-                {/* <td className="border px-8 py-4 text-sm">{ id }</td>
-                <td className="border px-8 py-4 text-sm">{ startTime }</td>
-                <td className="border px-8 py-4 text-sm">{ startBlock }</td> */}
-                <td className="border px-8 py-4 text-sm">{ completeAtTime ? moment.unix(completeAtTime).format("L @ LT") : '' }</td>
-                <td className="border px-8 py-4 text-sm">{ questContract }</td>
-                <td className="border px-8 py-4 text-sm">{ questId }</td>
-                {/* <td>{ player }</td> */}
-                <td className="border px-8 py-4 text-sm">{ heroId }</td>
-                <td className="border px-8 py-4 text-sm text-center">
+                {/* <td className="border border-hazelnut px-8 py-4 text-white text-sm">{ id }</td>
+                <td className="border border-hazelnut px-8 py-4 text-white text-sm">{ startTime }</td>
+                <td className="border border-hazelnut px-8 py-4 text-white text-sm">{ startBlock }</td> */}
+                <td className="border border-hazelnut px-8 py-4 text-white text-sm">{ completeAtTime ? moment.unix(completeAtTime).format("L @ LT") : '' }</td>
+                <td className="border border-hazelnut px-8 py-4 text-white text-sm">{ questContract }</td>
+                {/* <td className="border border-hazelnut px-8 py-4 text-white text-sm">{ questId }</td>
+                <td>{ player }</td> */}
+                <td className="border border-hazelnut px-8 py-4 text-white text-sm">{ heroId }</td>
+                <td className="border border-hazelnut px-8 py-4 text-white text-sm text-center">
                   <Image
                     src={ "/images/items/" + rewardItem + ".png" }
                     height={40}
@@ -239,7 +243,7 @@ function Form() {
                   /> <br />
                   { rewardItem }
                 </td>
-                <td className="border px-8 py-4 text-sm">{ formatQuantity(rewardItem, itemQuantity) }</td>
+                <td className="border border-hazelnut px-8 py-4 text-white text-sm">{ formatQuantity(rewardItem, itemQuantity) }</td>
               </tr>
             )) }
           </tbody>
