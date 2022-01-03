@@ -12,7 +12,7 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <section className="border-2 border-hazelnut mt-5">
+      <section>
         <TransactionForm />
       </section>
     </Layout>

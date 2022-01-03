@@ -15,6 +15,7 @@ module.exports = {
         'honey': '#fac05d',
         'ivy': '#14c25a',
         'hazelnut': '#4c3e23',
+        'fading-hazelnut': 'rgb(76, 62, 35, .6)',
       },
       animation: {
         'spin-slow': 'spin 3s linear infinite',
