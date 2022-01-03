@@ -41,7 +41,7 @@ export default function Layout({ children, home }) {
           />
           </div>
         </div>
-        <div className="border-2 border-hazelnut mt-2 ml-5 p-5 max-w-prose">
+        <div className="border-2 border-hazelnut mt-2 mx-5 p-5 max-w-prose">
           <p className="text-white">
             Commander, your questing heroes sing such splendid songs of wonders and riches. I couldn't help but to collect them all. What has been written is history &#8212; as long as my quill can keep up, that is! Care to see how your heroes fare?
           </p>
