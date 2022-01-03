@@ -1,5 +1,8 @@
 # The Clerk of Serendale
-A DFK specific application that attemps to generate a transaction history report. Next.js and Tailwind as the framework. Ethers as the library to interact with the Harmony blockchain. A form constructs a query to Harmony's Node API with a start and end date. After retreiving all transactions, the results are filtered with the date range against each transaction's timestamp.
+Deployed on Vercel:
+[https://defi-kingdoms-clerk-vercel.vercel.app/](https://defi-kingdoms-clerk-vercel.vercel.app/)
+
+A DFK specific application that attemps to generate a transaction history report. First time developing an app that interacts with the Harmony blockchain with Next.js and Tailwind as the framework. Ethers as the library to interact with the Harmony blockchain. A form constructs a query to Harmony's Node API with a start and end date. After retreiving all transactions, the results are filtered with the date range against each transaction's timestamp.
 
 ## Prerequisites
 - node v16.13.1
@@ -32,4 +35,5 @@ npm run dev
 - [ ] Unit tests
 
 ## Acknowledgements
-All image assets, lore, and styling inspiration is credited to [DeFi Kingdoms](https://defikingdoms.com/)
+- Thank you to [0rtis](https://github.com/0rtis/) the ABIs!
+- All image assets, lore, and styling inspiration is credited to [DeFi Kingdoms](https://defikingdoms.com/)
