@@ -2,68 +2,52 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const name = 'Clerk Bean Jackson'
+const name = 'Clerk of Serendale'
 export const siteTitle = 'DeFi Kingdoms Clerk'
 
 export default function Layout({ children, home }) {
   return (
-    <div>
+    <div className="p-5">
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
         <meta
           name="description"
           content="Transaction history report for DeFi Kingdoms"
         />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header>
-        {home ? (
-          <>
+      <header className="flex flex-wrap pt-5">
+        <div className="min-w-[250px] mb-6 pl-5 pt-5">
+          <h1 className="font-header text-2xl text-white">{name}</h1>
+          <p className="text-lg text-white mb-6">Level 0</p>
+          <div className="
+            before:absolute
+            before:bg-profile-frame
+            before:content-['']
+            before:top-profile-frame-top
+            before:left-profile-frame-left
+            before:h-profile-frame-height
+            before:w-profile-frame-width
+            before:bg-cover
+            before:bg-no-repeat
+            before:z-10
+            ml-3
+          ">
             <Image
               priority
               src="/images/Clerk of Serendale.png"
               height={144}
               width={144}
               alt={name}
-            />
-            <h1 className="font-header text-2xl font-bold">{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2>
-              <Link href="/">
-                <a>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
+          />
+          </div>
+        </div>
+        <div className="border-2 border-hazelnut mt-2 p-5 max-w-prose">
+          <p className="text-white">
+            Commander, your questing heroes sing such splendid songs of wonders and riches. I couldn't help but to collect them all. What has been written is history &#8212; as long as my quill can keep up, that is! Care to see how your heroes fare?
+          </p>
+        </div>
       </header>
       <main>{children}</main>
-      {!home && (
-        <div>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
     </div>
   )
 }

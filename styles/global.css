@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  background-color: #100f21;
+}
 
 /* Vendor Override */
 .react-datepicker {

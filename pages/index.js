@@ -12,13 +12,7 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <section>
-        <h1 className="font-header text-lg underline">... of Serendale</h1>
-        <p>
-          What has been written is history.
-        </p>
-      </section>
-      <section>
+      <section className="border-2 border-hazelnut mt-5">
         <TransactionForm />
       </section>
     </Layout>
