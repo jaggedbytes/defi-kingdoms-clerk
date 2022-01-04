@@ -5,8 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import moment from 'moment'
 import { getTransactionReceipt } from '../lib/requests'
 import Image from 'next/image'
-
-function Form() {
+function Form(allImageFiles) {
   const [transactionData, setTransactionData] = useState([])
   const setNetworkValue = useState("")
   const [startDate, setStartDate] = useState(new Date())
@@ -239,7 +238,7 @@ function Form() {
                   { rewardItem ? (
                     <>
                       <Image
-                        src={ "/images/items/" + rewardItem + ".png" }
+                        src={ "/images/items/" + Object.values(allImageFiles)[Object.values(allImageFiles).findIndex((el) => el.includes(rewardItem))] }
                         height={40}
                         width={40}
                       /> <br />
