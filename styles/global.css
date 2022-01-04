@@ -11,6 +11,10 @@ html {
   border-radius: 0 !important;
 }
 
+.react-datepicker-popper {
+  z-index: 20 !important;
+}
+
 .react-datepicker__navigation {
   top: 10px !important;
 }
