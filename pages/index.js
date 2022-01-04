@@ -1,8 +1,19 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import TransactionForm from '../components/form'
+import { getImageFilenames } from '../lib/itemImages'
 
-export default function Home() {
+export async function getStaticProps() {
+  const allImageFiles = getImageFilenames()
+
+  return {
+    props: {
+      allImageFiles
+    }
+  }
+}
+
+export default function Home({ allImageFiles }) {
   return (
     <Layout home>
       <Head>
@@ -13,7 +24,7 @@ export default function Home() {
         />
       </Head>
       <section>
-        <TransactionForm />
+        <TransactionForm { ...allImageFiles } />
       </section>
     </Layout>
   )
